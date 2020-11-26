@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import Header from './Header';
 import Main from './Main';
 import About from './About';
@@ -14,7 +14,8 @@ import Favorites from './Favorites';
 import Footer from './Footer';
 import '../index.css'
 import SignIn from './SignIn';
-import Post from './Post';
+import AdminPage from './AdminPage';
+import UserPortal from './UserPortal';
 
 class Layout extends Component {
     render() {
@@ -33,7 +34,8 @@ class Layout extends Component {
                 <div>
                     <Route exact path="/" component={Main} />
                     <Route path="/main" component={Main} />
-                    <Route path="/post" component={Post} />
+                    <Route path="/admin" component={AdminPage} />
+                    <Route path="/portal" component={UserPortal} />
                 </div>
             )
         }
@@ -63,4 +65,4 @@ class Layout extends Component {
     }
 }
 
-export default Layout;
+export default withRouter(Layout);

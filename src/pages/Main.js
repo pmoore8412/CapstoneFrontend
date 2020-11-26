@@ -10,7 +10,7 @@ class Main extends Component {
     componentDidMount() {
         const email = localStorage.getItem("loggedInUser");
         const params = {email}
-        Axios.get('http://localhost:8080/findUserById', {params} )
+        Axios.get('http://localhost:8080/findUser', {params} )
         .then(response => {
             this.setState({
                 user: response.data

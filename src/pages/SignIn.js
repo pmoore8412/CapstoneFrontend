@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import Logo from '../images/blog-logo-round.png'
-import { Axios } from 'axios';
+import Axios from 'axios';
 
 class SignIn extends Component {
 
     state = {
         user: {
-            userName: '',
+            email: '',
             password: '',
         }
     }
@@ -21,11 +21,13 @@ class SignIn extends Component {
         });
     }
 
-    handleSubmit = () => {
+    handleSubmit = (event) => {
+        event.preventDefault();
         Axios.post('http://localhost:8080/userLogin', this.state.user)
         .then(response => {
+            console.log('logging in user');
             localStorage.setItem("loggedInUser", response.data.email);
-            this.props.history.push('/');            
+            this.props.history.push("main");            
         })
         .catch(error => {
             //display error message
@@ -36,7 +38,7 @@ class SignIn extends Component {
         return (
             <div className="contaner">
                 <br></br>
-                <form class="form-signin">
+                <form class="form-signin" onSubmit={this.handleSubmit}>
                     <div class="text-center mb-4">
                         <img class="mb-4" src={Logo} alt="Simply Moore Making" width="300px" height="300px" />
                         <h1 class="mb-3">Sign In</h1>
@@ -51,7 +53,7 @@ class SignIn extends Component {
                         name="password" class="form-control" placeholder="Password" />
                         <label for="password">Password</label>
                     </div>
-                    <button onClick={this.handleSubmit} className="btn btn-primary" type="submit">Sign in</button>
+                    <button className="btn btn-primary" type="submit">Sign in</button>
                 </form>
             </div>
         );

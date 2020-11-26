@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
-import {Axios} from 'axios';
+import {Link, withRouter} from 'react-router-dom';
 import twitter from '../images/twitter-logo-white.png'
 import facebook from '../images/facebook-white.png'
 import insta from '../images/instagram-white.png'
@@ -8,11 +7,16 @@ import pintrest from '../images/pintrest-white.png'
 import youtube from '../images/white-youtube-logo.png'
 
 class Header extends Component {
-
+    state = {
+        user: {
+            email: '',
+            password: ''
+        }
+    }
 
     signOut = () => {
         localStorage.removeItem("loggedInUser");
-        this.props.history.push('/');
+        this.props.history.push("main");
     }
 
 
@@ -26,12 +30,12 @@ class Header extends Component {
             <Link className="nav-link" to="/sub">Subscribe</Link>
         )
 
-        if(localStorage.getItem("userLogin")) {
+        if(localStorage.getItem("loggedInUser") != null) {
             signInSignOut = (
-                <button onClick={this.signOut} className="btn btn-outline-light my-2 my-sm-0" type="button">Sign Out</button>
+                <button onClick={this.signOut} className="btn btn-outline-light my-2 my-sm-0" type="submit">Sign Out</button>
             );
             userLogedIn = (
-                <Link className="nav-link" to="/sub">Creat New Post</Link>
+                <Link className="nav-link" to="/admin">Admin</Link>
             );
         }
 
@@ -82,4 +86,4 @@ class Header extends Component {
     }
 }
 
-export default Header;
+export default withRouter(Header);
