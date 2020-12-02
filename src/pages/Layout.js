@@ -16,6 +16,8 @@ import '../index.css'
 import SignIn from './SignIn';
 import AdminPage from './AdminPage';
 import UserPortal from './UserPortal';
+import AdminMain from './AdminMain';
+import ReadPost from './ReadPost';
 
 class Layout extends Component {
     render() {
@@ -30,14 +32,23 @@ class Layout extends Component {
         )
 
         if(localStorage.getItem("loggedInUser")) {
+            if(localStorage.getItem("role") === "admin") {
             routes = (
                 <div>
                     <Route exact path="/" component={Main} />
                     <Route path="/main" component={Main} />
                     <Route path="/admin" component={AdminPage} />
-                    <Route path="/portal" component={UserPortal} />
+                    <Route path="/adminMain" component={AdminMain} />
                 </div>
-            )
+            )}
+            else {
+                routes = (
+                <div>
+                    <Route exact path="/" component={Main} />
+                    <Route path="/main" component={Main} />
+                    <Route path="/portal" component={UserPortal} />
+                </div>)
+            }
         }
 
         return (
@@ -58,6 +69,7 @@ class Layout extends Component {
                     <Route path="/homemaking" component={Homemaking} />
                     <Route path="/art" component={Art} />
                     <Route path="/favorites" component={Favorites} />
+                    <Route path="/readPost" component={ReadPost} />
                 </div>
                 <div className="container-fluid"><Footer /></div>
             </div>

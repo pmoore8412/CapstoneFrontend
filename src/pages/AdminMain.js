@@ -1,42 +1,10 @@
 import React, { Component } from 'react';
-import Axios from 'axios';
-import { withRouter } from 'react-router-dom';
 
-class Main extends Component {
-
-    state = {
-        user: {}
-    }
-
-    componentDidMount() {
-        const email = localStorage.getItem("loggedInUser");
-        const params = { email }
-        Axios.get('http://localhost:8080/findUser', { params })
-            .then(response => {
-                this.setState({
-                    user: response.data
-                });
-            })
-            .catch(error => {
-                // display error message
-            })
-    }
-
+class AdminMain extends Component {
     render() {
         return (
             <div>
                 <br></br>
-                <aside style={{float: "right", marginRight: 50, marginTop: 100, background: "white"}}>
-                    <div class="card-deck">
-                        <div class="card" style={{width: 200, height: 400}}>
-                            <div class="card-body">
-                                <h5 class="card-title">Arcive</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            </div>
-                        </div>
-                    </div>
-                </aside>
                 <div className="container">
                     <h3 className="sub-title-font">Featured Posts</h3>
                     <div class="card-deck">
@@ -157,4 +125,4 @@ class Main extends Component {
     }
 }
 
-export default Main;
+export default AdminMain;

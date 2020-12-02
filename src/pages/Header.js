@@ -10,12 +10,14 @@ class Header extends Component {
     state = {
         user: {
             email: '',
-            password: ''
+            password: '',
+            role: ''
         }
     }
 
     signOut = () => {
         localStorage.removeItem("loggedInUser");
+        localStorage.removeItem("role");
         this.props.history.push("main");
     }
 
@@ -34,9 +36,15 @@ class Header extends Component {
             signInSignOut = (
                 <button onClick={this.signOut} className="btn btn-outline-light my-2 my-sm-0" type="submit">Sign Out</button>
             );
+            if(localStorage.getItem("role") === "admin") {
             userLogedIn = (
                 <Link className="nav-link" to="/admin">Admin</Link>
-            );
+            );}
+            else {
+                userLogedIn = (
+                    <Link className="nav-link" to="/portal">User Portal</Link>
+                )
+            }
         }
 
         return (

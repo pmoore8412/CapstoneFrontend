@@ -41,7 +41,8 @@ code {
 }
 
 .about-image {
-  text-align: right;
+  padding-left: 15px;
+  float: right;
 }
 
 .about-text {

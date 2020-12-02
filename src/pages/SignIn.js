@@ -8,6 +8,7 @@ class SignIn extends Component {
         user: {
             email: '',
             password: '',
+            role: ''
         }
     }
 
@@ -27,6 +28,8 @@ class SignIn extends Component {
         .then(response => {
             console.log('logging in user');
             localStorage.setItem("loggedInUser", response.data.email);
+            localStorage.setItem("role", response.data.role)
+            console.log(response.data.role);
             this.props.history.push("main");            
         })
         .catch(error => {
@@ -35,10 +38,12 @@ class SignIn extends Component {
     }
 
     render() {
+
+
         return (
             <div className="contaner">
                 <br></br>
-                <form class="form-signin" onSubmit={this.handleSubmit}>
+                <form className="form-signin" onSubmit={this.handleSubmit}>
                     <div class="text-center mb-4">
                         <img class="mb-4" src={Logo} alt="Simply Moore Making" width="300px" height="300px" />
                         <h1 class="mb-3">Sign In</h1>
@@ -55,6 +60,7 @@ class SignIn extends Component {
                     </div>
                     <button className="btn btn-primary" type="submit">Sign in</button>
                 </form>
+               
             </div>
         );
     }
