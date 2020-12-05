@@ -4,7 +4,7 @@ class Art extends Component {
     render() {
         return (
             <div>
-                <h1>Gallery Page</h1>
+                <h1>Gallery</h1>
             </div>
         );
     }

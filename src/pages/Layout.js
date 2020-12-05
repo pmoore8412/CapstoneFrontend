@@ -18,6 +18,8 @@ import AdminPage from './AdminPage';
 import UserPortal from './UserPortal';
 import AdminMain from './AdminMain';
 import ReadPost from './ReadPost';
+import UpdatePost from './UpdatePost';
+
 
 class Layout extends Component {
     render() {
@@ -39,6 +41,7 @@ class Layout extends Component {
                     <Route path="/main" component={Main} />
                     <Route path="/admin" component={AdminPage} />
                     <Route path="/adminMain" component={AdminMain} />
+                    <Route path="/updatePost" component={UpdatePost} />
                 </div>
             )}
             else {

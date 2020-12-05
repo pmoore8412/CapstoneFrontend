@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
-import { withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class Main extends Component {
 
     state = {
-        user: {}
+        user: {},
+        posts: []
     }
 
     componentDidMount() {
@@ -20,6 +21,27 @@ class Main extends Component {
             .catch(error => {
                 // display error message
             })
+        Axios.get("http://localhost:8080/listPosts")
+        .then (response => {
+            this.setState ({
+                posts: response.data
+            })
+        }).catch(error => {
+            console.log('error retrieving posts');
+        })
+    }
+
+    renderPostsFetured = () => {
+        return  this.state.posts.map((post, index) => {
+            if(post.featured === true) {
+            return <div className="col mb-4">
+            <aside>
+                <img className="h-100 w-100" src={post.postImageURL} alt="Well this is embarasing" />
+            </aside>
+            <Link style={{color: "#5f8976", fontSize: 24}} to={{pathname: "/readPost/postTitle="+post.postTitle, post}}>{post.postTitle}</Link>
+        </div>
+            }
+        });
     }
 
     render() {
@@ -30,9 +52,8 @@ class Main extends Component {
                     <div class="card-deck">
                         <div class="card" style={{width: 200, height: 400}}>
                             <div class="card-body">
-                                <h5 class="card-title">Arcive</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                <h4>Archive</h4>
+                                <p>Archive comming soon</p>
                             </div>
                         </div>
                     </div>
@@ -40,30 +61,7 @@ class Main extends Component {
                 <div className="container">
                     <h3 className="sub-title-font">Featured Posts</h3>
                     <div class="card-deck">
-                        <div class="card">
-                            <img src="..." class="card-img-top" alt="..." />
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <img src="..." class="card-img-top" alt="..." />
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <img src="..." class="card-img-top" alt="..." />
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            </div>
-                        </div>
+                        {this.renderPostsFetured()}
                     </div>
                 </div>
                 <br></br>

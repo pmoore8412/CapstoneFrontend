@@ -44,16 +44,16 @@ class SignIn extends Component {
             <div className="contaner">
                 <br></br>
                 <form className="form-signin" onSubmit={this.handleSubmit}>
-                    <div class="text-center mb-4">
+                    <div className="text-center mb-4">
                         <img class="mb-4" src={Logo} alt="Simply Moore Making" width="300px" height="300px" />
                         <h1 class="mb-3">Sign In</h1>
                     </div>
-                    <div class="form-label-group container col-2">
+                    <div className="form-label-group container col-2">
                         <input onChange={this.changeHandler} value={this.state.user.email} type="text" id="email" name="email" class="form-control" placeholder="email" />
                         <label for="user_name">Email</label>
                     </div>
 
-                    <div class="form-label-group container col-2">
+                    <div className="form-label-group container col-2">
                         <input onChange={this.changeHandler} value={this.state.user.password} type="password" id="password" 
                         name="password" class="form-control" placeholder="Password" />
                         <label for="password">Password</label>

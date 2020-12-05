@@ -18,7 +18,7 @@ class Header extends Component {
     signOut = () => {
         localStorage.removeItem("loggedInUser");
         localStorage.removeItem("role");
-        this.props.history.push("main");
+        this.props.history.push("/main");
     }
 
 
@@ -39,7 +39,8 @@ class Header extends Component {
             if(localStorage.getItem("role") === "admin") {
             userLogedIn = (
                 <Link className="nav-link" to="/admin">Admin</Link>
-            );}
+            );
+            }
             else {
                 userLogedIn = (
                     <Link className="nav-link" to="/portal">User Portal</Link>
