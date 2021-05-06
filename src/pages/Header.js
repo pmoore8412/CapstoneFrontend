@@ -5,6 +5,7 @@ import facebook from '../images/facebook-white.png'
 import insta from '../images/instagram-white.png'
 import pintrest from '../images/pintrest-white.png'
 import youtube from '../images/white-youtube-logo.png'
+import discord from '../images/discord-logo.png'
 
 class Header extends Component {
     state = {
@@ -69,10 +70,6 @@ class Header extends Component {
                                 data-placement="bottom" title="Link to my Instagram page"><img src={insta} alt="Instagram" width="25px" height="25px" /></a>
                             </li>
                             <li className="nav-item active">
-                                <a className="nav-link" href="https://www.pinterest.com/" target="_blank" rel="noreferrer" data-toggle="tooltip" 
-                                data-placement="bottom" title="Link to my Pinterest page"><img src={pintrest} alt="Pintrest" width="25px" height="25px" /></a>
-                            </li>
-                            <li className="nav-item active">
                                 <Link className="nav-link" to="/about">About</Link>
                             </li>
                             <li class="nav-item active">
@@ -82,8 +79,16 @@ class Header extends Component {
                                 <Link className="nav-link" to="/contact">Contact</Link>
                             </li>
                             <li className="nav-item active">
+                                <a className="nav-link" href="https://www.pinterest.com/" target="_blank" rel="noreferrer" data-toggle="tooltip" 
+                                data-placement="bottom" title="Link to my Pinterest page"><img src={pintrest} alt="Pintrest" width="25px" height="25px" /></a>
+                            </li>
+                            <li className="nav-item active">
                                 <a className="nav-link" href="https://www.youtube.com/" target="_blank" rel="noreferrer" data-toggle="tooltip" 
                                 data-placement="bottom" title="Link to my YouTube page"><img src={youtube} alt="YouTube" width="35px" height="25px" /></a>
+                            </li>
+                            <li className="nav-item active">
+                                <a className="nav-link" href="https://discord.com/" target="_blank" rel="noreferrer" data-toggle="tooltip" 
+                                data-placement="bottom" title="Link to my Discord"><img src={discord} alt="Discord" width="35px" height="25px" /></a>
                             </li>
                         </ul>
                         

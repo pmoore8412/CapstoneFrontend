@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
+import { Link } from 'react-router-dom';
 
 class UserPortal extends Component {
 
@@ -26,9 +27,12 @@ class UserPortal extends Component {
             <div>
                 <h1>Welcome {this.state.user.userName}</h1>
                 <br/>
-                <form className="container">
+                    <label style={{margin: 10}}>Click here to update your profile: </label>
+                    <Link to="/updateProfile" className="btn btn-primary">Update Profile</Link>
+                <br/>
+                <br/>
+                    <label style={{margin: 10}}>Click here to delete your profile:</label>
                     <button type="submit" className="btn btn-primary">Delete Profile</button>
-                </form>
             </div>
         );
     }

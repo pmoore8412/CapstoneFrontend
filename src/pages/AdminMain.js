@@ -34,9 +34,8 @@ class AdminMain extends Component {
         event.preventDefault();
         Axios.post('http://localhost:8080/updatePost', this.state.post)
             .then(response => {
-                //nav to a thank you page
                 console.log('post added');
-                this.props.history.push('/adminMain')
+                this.props.history.push('/adminMain');
             })
             .catch(error => {
                 //display error message

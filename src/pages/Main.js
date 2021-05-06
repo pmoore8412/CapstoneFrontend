@@ -34,14 +34,44 @@ class Main extends Component {
     renderPostsFetured = () => {
         return  this.state.posts.map((post, index) => {
             if(post.featured === true) {
-            return <div className="col mb-4">
+            return <div style={{width:350,height:300,marginRight:15}}>
             <aside>
-                <img className="h-100 w-100" src={post.postImageURL} alt="Well this is embarasing" />
+                <img style={{width:350,height:300}} src={post.postImageURL} alt="Well this is embarasing" />
             </aside>
             <Link style={{color: "#5f8976", fontSize: 24}} to={{pathname: "/readPost/postTitle="+post.postTitle, post}}>{post.postTitle}</Link>
         </div>
             }
         });
+    }
+
+    renderPostsDTD = () => {
+        return this.state.posts.map((post, index) => {
+            if(post.postCategory === "DTD") {
+                if(post.subFeatured === true) {
+                    return <div style={{width:210,height:150,marginRight:15}}>
+                                <aside>
+                                    <img style={{width:210,height:150}} src={post.postImageURL} alt="Well this is embarasing" />
+                                </aside>
+                                <Link style={{color: "#5f8976", fontSize: 24}} to={{pathname: "/readPost/postTitle="+post.postTitle, post}}>{post.postTitle}</Link>
+                            </div>
+                }
+            }
+        })
+    }
+
+    renderPostsRecipes = () => {
+        return this.state.posts.map((post, index) => {
+            if(post.postCategory === "Recipes") {
+                if(post.subFeatured === true) {
+                    return <div style={{width:350,height:300,marginRight:15}}>
+                                <aside>
+                                    <img style={{width:350,height:300}} src={post.postImageURL} alt="Well this is embarasing" />
+                                </aside>
+                                <Link style={{color: "#5f8976", fontSize: 24}} to={{pathname: "/readPost/postTitle="+post.postTitle, post}}>{post.postTitle}</Link>
+                            </div>
+                }
+            }
+        }) 
     }
 
     render() {
@@ -60,96 +90,36 @@ class Main extends Component {
                 </aside>
                 <div className="container">
                     <h3 className="sub-title-font">Featured Posts</h3>
-                    <div class="card-deck">
+                    <div class="d-flex">
                         {this.renderPostsFetured()}
                     </div>
                 </div>
-                <br></br>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
                 <div className="container">
                     <h3 className="sub-title-font">Dollar Tree DIYs</h3>
                     <div class="card-deck">
-                        <div class="card" style={{width: 200, height: 200}}>
-                            <img src="..." class="card-img-top" alt="..." />
-                            
-                        </div>
-                        <div class="card" style={{width: 200, height: 200}}>
-                            <img src="..." class="card-img-top" alt="..." />
-                            
-                        </div>
-                        <div class="card" style={{width: 200, height: 200}}>
-                            <img src="..." class="card-img-top" alt="..." />
-                            
-                        </div>
-                        <div class="card" style={{width: 200, height: 200}}>
-                            <img src="..." class="card-img-top" alt="..." />
-                            
-                        </div>
-                        <div class="card" style={{width: 200, height: 200}}>
-                            <img src="..." class="card-img-top" alt="..." />
-                            
-                        </div>
+                        {this.renderPostsDTD()}
                     </div>
                 </div>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
                 <br/>
                 <div className="container">
                     <h3 className="sub-title-font">Recipes</h3>
                     <div class="card-deck">
-                        <div class="card">
-                            <img src="..." class="card-img-top" alt="..." />
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <img src="..." class="card-img-top" alt="..." />
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <img src="..." class="card-img-top" alt="..." />
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            </div>
-                        </div>
+                        {this.renderPostsRecipes()}
                     </div>
                 </div>
-                <br />
-                <div className="container">
-                    <h3 className="sub-title-font">Homemaking</h3>
-                    <div class="card-deck">
-                        <div class="card">
-                            <img src="..." class="card-img-top" alt="..." />
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <img src="..." class="card-img-top" alt="..." />
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <img src="..." class="card-img-top" alt="..." />
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
             </div>
         );
     }

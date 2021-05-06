@@ -19,6 +19,7 @@ import UserPortal from './UserPortal';
 import AdminMain from './AdminMain';
 import ReadPost from './ReadPost';
 import UpdatePost from './UpdatePost';
+import UpdateProfile from './UpdateProfile';
 
 
 class Layout extends Component {
@@ -73,6 +74,7 @@ class Layout extends Component {
                     <Route path="/art" component={Art} />
                     <Route path="/favorites" component={Favorites} />
                     <Route path="/readPost" component={ReadPost} />
+                    <Route path="/updateProfile" component={UpdateProfile} />
                 </div>
                 <div className="container-fluid"><Footer /></div>
             </div>

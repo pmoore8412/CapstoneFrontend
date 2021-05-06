@@ -37,9 +37,9 @@ class Post extends Component {
         event.preventDefault();
         Axios.post('http://localhost:8080/submitPost', this.state.post)
         .then(response => {
-            //nav to a thank you page
+            localStorage.getItem("fetchPost", response.data.postID);
             console.log('post added');
-            this.props.history.push('adminMain')
+            this.props.history.push('/adminMain');
         })
         .catch(error => {
             //display error message

@@ -19,12 +19,23 @@ class Diy extends Component {
             })
     }
 
+    handleSubmit = (event) => {
+        event.preventDefault();
+        Axios.post('http://localhost:8080/findPost', this.state.posts)
+        .then(response => {
+            localStorage.setItem("fetchPost", response.data.postID);
+        })
+        .catch(error => {
+            //display error message
+        })
+    }
+
     renderPostsDIY = () => {
         return this.state.posts.map((post, index) => {
             if(post.postCategory === "DIY") {
             return <div style={{width:400,height:400,margin:15}}>
             <aside>
-                <img className="h-100 w-100" src={post.postImageURL} alt="Well this is embarasing" />
+                <img style={{width:400,height:300,margin:15}} src={post.postImageURL} alt="Well this is embarasing" />
             </aside>
             <Link style={{color: "#5f8976", fontSize: 24}} to={{pathname: "/readPost/postTitle="+post.postTitle, post}}>{post.postTitle}</Link>
         </div>
@@ -38,7 +49,7 @@ class Diy extends Component {
             if(post.postCategory === "DTD") {
             return <div style={{width:400,height:400,margin:15}}>
                 <aside>
-                    <img className="h-100 w-100" src={post.postImageURL} alt="Well this is embarasing" />
+                    <img style={{width:400,height:300,margin:15}} src={post.postImageURL} alt="Well this is embarasing" />
                 </aside>
                 <Link style={{color: "#5f8976", fontSize: 24}} to={{pathname: "/readPost/postTitle="+post.postTitle, post}}>{post.postTitle}</Link>
             </div>
@@ -55,15 +66,16 @@ class Diy extends Component {
                 <div className="container">
                     <h3 className="sub-title-font">Dollor Tree DIY Posts</h3>
                     <div style={{overflow:"auto"}}>
-                    <div className="d-flex flex-row-reverse justify-content-start">
+                    <div className="d-flex">
                         {this.renderPostsDTD()}
                     </div>
                     </div>
                 </div>
+                <br/>
                 <div className="container">
                     <h3 className="sub-title-font">DIY Posts</h3>
                     <div style={{overflow:"auto"}}>
-                    <div class="d-flex flex-row-reverse justify-content-start">
+                    <div class="d-flex">
                         {this.renderPostsDIY()}
                     </div>
                     </div>
